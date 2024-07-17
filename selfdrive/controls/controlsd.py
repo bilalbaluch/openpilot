@@ -149,6 +149,7 @@ class Controls:
     self.steer_limited = False
     self.desired_curvature = 0.0
     self.experimental_mode = False
+    self.custom_profile_enabled = False
     self.personality = self.read_personality_param()
     self.v_cruise_helper = VCruiseHelper(self.CP)
     self.recalibrating_seen = False
@@ -821,6 +822,7 @@ class Controls:
       self.personality = self.read_personality_param()
       if self.CP.notCar:
         self.joystick_mode = self.params.get_bool("JoystickDebugMode")
+      self.custom_profile_enabled = self.params.get_bool("CustomProfileEnabledToggle")
       time.sleep(0.1)
 
   def controlsd_thread(self):
