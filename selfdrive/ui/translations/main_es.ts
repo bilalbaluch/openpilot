@@ -1062,6 +1062,14 @@ Esto puede tardar hasta un minuto.</translation>
         <source>Enable the openpilot longitudinal control (alpha) toggle to allow Experimental mode.</source>
         <translation>Activar el control longitudinal experimental para permitir el modo Experimental.</translation>
     </message>
+    <message>
+        <source>Enable Custom Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When enabled, run a custom speed profile, disabling the stock OpenPilot system. Overrides standard OpenPilot behaviour to run the configured profile - not designed to be a driver assistance system, use with caution.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Updater</name>

@@ -2,6 +2,9 @@
 
 #include <QPainter>
 #include <QStackedLayout>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
 
 #include "selfdrive/ui/qt/util.h"
 
@@ -31,13 +34,39 @@ OnroadWindow::OnroadWindow(QWidget *parent) : QWidget(parent) {
   alerts->setAttribute(Qt::WA_TransparentForMouseEvents, true);
   stacked_layout->addWidget(alerts);
 
+
+  // Box showing information about the current custom profile
+  profileInfoBox = new QWidget(this);
+  profileInfoBox->setStyleSheet("background-color: rgba(0, 0, 0, 50); border: 2px solid black;");
+
+  // Set geometry for bottom-right corner
+  profileInfoBox->setFixedSize(100, 50);
+
+
+  QVBoxLayout *boxLayout = new QVBoxLayout(profileInfoBox);
+  boxLayout->setContentsMargins(0, 0, 0, 0);
+  QLabel *profileInfoLabel = new QLabel("Profile Info", profileInfoBox);
+  boxLayout->addWidget(profileInfoLabel);
+
+  stacked_layout->addWidget(profileInfoBox);
+
+
   // setup stacking order
   alerts->raise();
+  profileInfoBox->raise(); // place the info at the top of the stack
 
   setAttribute(Qt::WA_OpaquePaintEvent);
   QObject::connect(uiState(), &UIState::uiUpdate, this, &OnroadWindow::updateState);
   QObject::connect(uiState(), &UIState::offroadTransition, this, &OnroadWindow::offroadTransition);
 }
+
+void OnroadWindow::resizeEvent(QResizeEvent *event) {
+  QWidget::resizeEvent(event);
+
+  // update the geometry of the profile info box
+  profileInfoBox->move(width() - profileInfoBox->width(), height() - profileInfoBox->height());
+}
+
 
 void OnroadWindow::updateState(const UIState &s) {
   if (!s.scene.started) {

@@ -761,6 +761,9 @@ class Controls:
     controlsState.experimentalMode = self.experimental_mode
     controlsState.personality = self.personality
 
+    # update the custom profile enabled state
+    controlsState.customProfileEnabled = self.custom_profile_enabled
+
     lat_tuning = self.CP.lateralTuning.which()
     if self.joystick_mode:
       controlsState.lateralControlState.debugState = lac_log

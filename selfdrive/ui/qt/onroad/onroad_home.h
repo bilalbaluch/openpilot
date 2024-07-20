@@ -10,11 +10,13 @@ public:
   OnroadWindow(QWidget* parent = 0);
 
 private:
+  void resizeEvent(QResizeEvent *event);
   void paintEvent(QPaintEvent *event);
   OnroadAlerts *alerts;
   AnnotatedCameraWidget *nvg;
   QColor bg = bg_colors[STATUS_DISENGAGED];
   QHBoxLayout* split;
+  QWidget *profileInfoBox;
 
 private slots:
   void offroadTransition(bool offroad);
