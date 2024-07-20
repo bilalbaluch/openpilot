@@ -34,26 +34,31 @@ OnroadWindow::OnroadWindow(QWidget *parent) : QWidget(parent) {
   alerts->setAttribute(Qt::WA_TransparentForMouseEvents, true);
   stacked_layout->addWidget(alerts);
 
-
-  // Box showing information about the current custom profile
-  profileInfoBox = new QWidget(this);
-  profileInfoBox->setStyleSheet("background-color: rgba(0, 0, 0, 50); border: 2px solid black;");
-
-  // Set geometry for bottom-right corner
-  profileInfoBox->setFixedSize(100, 50);
+  profileInfo = new Profile(this);
+  profileInfo->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+  stacked_layout->addWidget(profileInfo);
 
 
-  QVBoxLayout *boxLayout = new QVBoxLayout(profileInfoBox);
-  boxLayout->setContentsMargins(0, 0, 0, 0);
-  QLabel *profileInfoLabel = new QLabel("Profile Info", profileInfoBox);
-  boxLayout->addWidget(profileInfoLabel);
-
-  stacked_layout->addWidget(profileInfoBox);
+//  // Box showing information about the current custom profile
+//  profileInfoBox = new QWidget(this);
+//  profileInfoBox->setStyleSheet("background-color: rgba(0, 0, 0, 50); border: 2px solid black;");
+//
+//  // Set geometry for bottom-right corner
+//  profileInfoBox->setFixedSize(100, 50);
+//
+//
+//  QVBoxLayout *boxLayout = new QVBoxLayout(profileInfoBox);
+//  boxLayout->setContentsMargins(0, 0, 0, 0);
+//  QLabel *profileInfoLabel = new QLabel("Profile Info", profileInfoBox);
+//  boxLayout->addWidget(profileInfoLabel);
+//
+//  stacked_layout->addWidget(profileInfoBox);
 
 
   // setup stacking order
   alerts->raise();
-  profileInfoBox->raise(); // place the info at the top of the stack
+  profileInfo->raise();
+  //profileInfoBox->raise(); // place the info at the top of the stack
 
   setAttribute(Qt::WA_OpaquePaintEvent);
   QObject::connect(uiState(), &UIState::uiUpdate, this, &OnroadWindow::updateState);
@@ -73,6 +78,7 @@ void OnroadWindow::updateState(const UIState &s) {
     return;
   }
 
+  profileInfo->updateState(s);
   alerts->updateState(s);
   nvg->updateState(s);
 
@@ -86,6 +92,7 @@ void OnroadWindow::updateState(const UIState &s) {
 
 void OnroadWindow::offroadTransition(bool offroad) {
   alerts->clear();
+  profileInfo->clear();
 }
 
 void OnroadWindow::paintEvent(QPaintEvent *event) {
