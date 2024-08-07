@@ -29,6 +29,8 @@ from openpilot.selfdrive.controls.lib.latcontrol_torque import LatControlTorque
 from openpilot.selfdrive.controls.lib.longcontrol import LongControl
 from openpilot.selfdrive.controls.lib.vehicle_model import VehicleModel
 
+from openpilot.selfdrive.controls.lib.profilecontrol import ProfileControl
+
 from openpilot.system.hardware import HARDWARE
 
 SOFT_DISABLE_TIME = 3  # seconds
@@ -123,6 +125,12 @@ class Controls:
     self.LoC = LongControl(self.CP)
     self.VM = VehicleModel(self.CP)
 
+    # initialising the profile controller
+    # TODO: move the plan to somewhere else
+    plan = [(0.0, 5.0), (10.0, 5.0), (-5.0, 4.0)]
+    self.PrC = ProfileControl(self.CP, plan)
+
+
     self.LaC: LatControl
     if self.CP.steerControlType == car.CarParams.SteerControlType.angle:
       self.LaC = LatControlAngle(self.CP, self.CI)
@@ -149,6 +157,7 @@ class Controls:
     self.steer_limited = False
     self.desired_curvature = 0.0
     self.experimental_mode = False
+    self.custom_profile_enabled = False
     self.personality = self.read_personality_param()
     self.v_cruise_helper = VCruiseHelper(self.CP)
     self.recalibrating_seen = False
@@ -518,8 +527,13 @@ class Controls:
       self.current_alert_types.append(ET.WARNING)
 
   def state_control(self, CS):
-    """Given the state, this function returns a CarControl packet"""
 
+    if self.custom_profile_enabled:
+      return self.state_control_alternative(CS)
+
+    # Given the state, this function returns a CarControl packet
+
+    # These look like calibration things, leaving in for now but I don't think they're strictly necessary
     # Update VehicleModel
     lp = self.sm['liveParameters']
     x = max(lp.stiffnessFactor, 0.1)
@@ -533,36 +547,47 @@ class Controls:
         self.LaC.update_live_torque_params(torque_params.latAccelFactorFiltered, torque_params.latAccelOffsetFiltered,
                                            torque_params.frictionCoefficientFiltered)
 
+    # models - can be skipped in profile mode
     long_plan = self.sm['longitudinalPlan']
     model_v2 = self.sm['modelV2']
 
+    # creating the car control message - keep this
     CC = car.CarControl.new_message()
     CC.enabled = self.enabled
 
     # Check which actuators can be enabled
+    # turn off lateral control if using a custom profile
     standstill = CS.vEgo <= max(self.CP.minSteerSpeed, MIN_LATERAL_CONTROL_SPEED) or CS.standstill
     CC.latActive = self.active and not CS.steerFaultTemporary and not CS.steerFaultPermanent and \
                    (not standstill or self.joystick_mode)
     CC.longActive = self.enabled and not self.events.contains(ET.OVERRIDE_LONGITUDINAL) and self.CP.openpilotLongitudinalControl
 
+
+    # setting actuations
     actuators = CC.actuators
+
+    # by default, the longitudinal control state is either off, stopping, starting, or PID
     actuators.longControlState = self.LoC.long_control_state
 
+    # Obviously don't need this
     # Enable blinkers while lane changing
     if model_v2.meta.laneChangeState != LaneChangeState.off:
       CC.leftBlinker = model_v2.meta.laneChangeDirection == LaneChangeDirection.left
       CC.rightBlinker = model_v2.meta.laneChangeDirection == LaneChangeDirection.right
 
+    # no clue how blinkers work tbh
     if CS.leftBlinker or CS.rightBlinker:
       self.last_blinker_frame = self.sm.frame
 
     # State specific actions
 
+    # reset PID loops if not active
     if not CC.latActive:
       self.LaC.reset()
     if not CC.longActive:
       self.LoC.reset()
 
+    # key part - replace with custom stuff
     if not self.joystick_mode:
       # accel PID loop
       pid_accel_limits = self.CI.get_pid_accel_limits(self.CP, CS.vEgo, self.v_cruise_helper.v_cruise_kph * CV.KPH_TO_MS)
@@ -574,6 +599,7 @@ class Controls:
       actuators.steer, actuators.steeringAngleDeg, lac_log = self.LaC.update(CC.latActive, CS, self.VM, lp,
                                                                              self.steer_limited, self.desired_curvature,
                                                                              self.sm['liveLocationKalman'])
+    # joystick mode code, could do something similar
     else:
       lac_log = log.ControlsState.LateralDebugState.new_message()
       if self.sm.recv_frame['testJoystick'] > 0:
@@ -642,6 +668,48 @@ class Controls:
       if any(not be.pressed and be.type == ButtonType.gapAdjustCruise for be in CS.buttonEvents):
         self.personality = (self.personality - 1) % 3
         self.params.put_nonblocking('LongitudinalPersonality', str(self.personality))
+
+    return CC, lac_log
+
+  def state_control_alternative(self, CS):
+    """Functions similarly to state_control, but returns a CarControl packet corresponding to a custom profile"""
+
+    # Creating the car control message
+    CC = car.CarControl.new_message()
+    CC.enabled = self.enabled
+
+    # actuators
+    CC.latActive = False # lateral control is fully disabled for now
+    CC.longActive = self.enabled and not self.events.contains(ET.OVERRIDE_LONGITUDINAL) and self.CP.openpilotLongitudinalControl
+
+    actuators = CC.actuators
+
+    # start the profile if able to do so
+    if (self.enabled and not self.PrC.isRunning):
+      self.PrC.start()
+    elif (not self.enabled and self.PrC.isRunning):
+      self.PrC.stop()
+
+    # longitudinal control state should be off/stopping/starting/pid
+    actuators.longControlState = self.PrC.long_control_state
+
+    # setting acceleration
+    pid_accel_limits = self.CI.get_pid_accel_limits(self.CP, CS.vEgo, self.v_cruise_helper.v_cruise_kph * CV.KPH_TO_MS)
+    actuators.accel = self.PrC.update(CC.longActive, CS, pid_accel_limits)
+
+    # Ensure no NaNs/Infs (same as above)
+    for p in ACTUATOR_FIELDS:
+      attr = getattr(actuators, p)
+      if not isinstance(attr, SupportsFloat):
+        continue
+
+      if not math.isfinite(attr):
+        cloudlog.error(f"actuators.{p} not finite {actuators.to_dict()}")
+        setattr(actuators, p, 0.0)
+
+    # since no lateral control, generate an empty lac_log message
+    lac_log = log.ControlsState.LateralDebugState.new_message()
+    lac_log.active = False
 
     return CC, lac_log
 
@@ -760,8 +828,21 @@ class Controls:
     controlsState.experimentalMode = self.experimental_mode
     controlsState.personality = self.personality
 
+    # update the custom profile enabled state
+    controlsState.customProfileEnabled = self.custom_profile_enabled
+
+    # update information about the current profile
+    controlsState.profileStartTime = self.PrC.start_time
+    controlsState.profileCurrentTime = self.PrC.current_time
+    controlsState.profilePlan = str(self.PrC.plan)
+    controlsState.profileStage = self.PrC.current_stage
+    controlsState.profileRunning = self.PrC.isRunning
+    controlsState.profileActualAccel = self.PrC.last_output_accel
+
+
+
     lat_tuning = self.CP.lateralTuning.which()
-    if self.joystick_mode:
+    if self.joystick_mode or self.custom_profile_enabled:
       controlsState.lateralControlState.debugState = lac_log
     elif self.CP.steerControlType == car.CarParams.SteerControlType.angle:
       controlsState.lateralControlState.angleState = lac_log
@@ -821,6 +902,7 @@ class Controls:
       self.personality = self.read_personality_param()
       if self.CP.notCar:
         self.joystick_mode = self.params.get_bool("JoystickDebugMode")
+      self.custom_profile_enabled = self.params.get_bool("CustomProfileEnabledToggle")
       time.sleep(0.1)
 
   def controlsd_thread(self):

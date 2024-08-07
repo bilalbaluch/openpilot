@@ -503,6 +503,37 @@
     </message>
 </context>
 <context>
+    <name>Profile</name>
+    <message>
+        <source>Custom Profile Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stock OP Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Engaged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disengaged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile Running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Reboot</source>
@@ -1057,6 +1088,14 @@ This may take up to a minute.</source>
     <message>
         <source>Enable driver monitoring even when openpilot is not engaged.</source>
         <translation>即使在openpilot未激活时也启用驾驶员监控。</translation>
+    </message>
+    <message>
+        <source>Enable Custom Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When enabled, run a custom speed profile, disabling the stock OpenPilot system. Overrides standard OpenPilot behaviour to run the configured profile - not designed to be a driver assistance system, use with caution.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

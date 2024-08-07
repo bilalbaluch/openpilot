@@ -697,6 +697,14 @@ struct ControlsState @0x97ff69c53601abf1 {
   experimentalMode @64 :Bool;
   personality @66 :LongitudinalPersonality;
 
+  customProfileEnabled @67 :Bool;
+  profileStartTime @68 :Float32;
+  profileCurrentTime @69 :Float32;
+  profilePlan @70 :Text;
+  profileStage @71 :UInt8;
+  profileRunning @72 :Bool;
+  profileActualAccel @73 :Float32;
+
   longControlState @30 :Car.CarControl.Actuators.LongControlState;
   vTargetLead @3 :Float32;
   vCruise @22 :Float32;  # actual set speed
