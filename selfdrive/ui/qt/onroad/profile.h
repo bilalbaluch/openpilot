@@ -4,6 +4,7 @@
 #pragma once
 
 #include <QWidget>
+#include <vector>
 
 #include "selfdrive/ui/ui.h"
 
@@ -18,10 +19,10 @@ public:
 
 protected:
   struct ProfileStatus {
-    QString text1;
+    std::vector<QString> texts;
 
     bool equal(const ProfileStatus &other) const {
-      return text1 == other.text1;
+      return texts == other.texts;
     }
   };
 

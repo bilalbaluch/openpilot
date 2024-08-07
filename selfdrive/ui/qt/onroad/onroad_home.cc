@@ -69,7 +69,7 @@ void OnroadWindow::resizeEvent(QResizeEvent *event) {
   QWidget::resizeEvent(event);
 
   // update the geometry of the profile info box
-  profileInfoBox->move(width() - profileInfoBox->width(), height() - profileInfoBox->height());
+  // profileInfoBox->move(width() - profileInfoBox->width(), height() - profileInfoBox->height());
 }
 
 

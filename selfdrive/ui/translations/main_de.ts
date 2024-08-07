@@ -505,15 +505,31 @@
 <context>
     <name>Profile</name>
     <message>
-        <source>Enabled</source>
+        <source>Custom Profile Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disabled</source>
+        <source>Stock OP Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disabled?</source>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Engaged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disengaged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile Running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile Stopped</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
