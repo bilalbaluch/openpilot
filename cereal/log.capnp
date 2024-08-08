@@ -704,6 +704,7 @@ struct ControlsState @0x97ff69c53601abf1 {
   profileStage @71 :UInt8;
   profileRunning @72 :Bool;
   profileActualAccel @73 :Float32;
+  profileHistory @74 :Text;
 
   longControlState @30 :Car.CarControl.Actuators.LongControlState;
   vTargetLead @3 :Float32;

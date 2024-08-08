@@ -26,13 +26,22 @@ void Profile::clear() {
 Profile::ProfileStatus Profile::getProfileStatus(const SubMaster &sm, uint64_t started_frame) {
   const cereal::ControlsState::Reader &cs = sm["controlsState"].getControlsState();
   const uint64_t controls_frame = sm.rcv_frame("controlsState");
+
   // times are float32
   const float start = cs.getProfileStartTime();
   const float time = cs.getProfileCurrentTime();
-  const float elapsed = cs.getProfileCurrentTime() - cs.getProfileStartTime();
+  const float elapsed = time - start;
+
+  // profile
   const std::string plan = cs.getProfilePlan().cStr();
   const uint8_t stage = cs.getProfileStage();
   const float accel = cs.getProfileActualAccel();
+  const std::string history = cs.getProfileHistory().cStr();
+
+  // car state stuff
+  const auto car_state = sm["carState"].getCarState();
+  float v_ego = car_state.getVEgo();
+  float a_ego = car_state.getAEgo();
 
   ProfileStatus p;
   if (controls_frame >= started_frame) {  // Don't get old profile.
@@ -54,15 +63,14 @@ Profile::ProfileStatus Profile::getProfileStatus(const SubMaster &sm, uint64_t s
       p.texts.push_back(tr("Profile Stopped"));
     }
 
-    p.texts.push_back(QString::fromStdString("Stage: " + std::to_string(stage)));
     p.texts.push_back(QString::fromStdString("Plan: " + plan));
-
-    p.texts.push_back(QString::fromStdString("Start Time: " + std::to_string(start)));
-    p.texts.push_back(QString::fromStdString("Current Time: " + std::to_string(time)));
-    p.texts.push_back(QString::fromStdString("Elapsed Time: " + std::to_string(elapsed)));
-
-    p.texts.push_back(QString::fromStdString("Actual Accel: " + std::to_string(accel)));
-
+    p.texts.push_back(QString::fromStdString("Stage: " + std::to_string(stage + 1)));
+    p.texts.push_back(QString::fromStdString("Accel: " + QString::number(accel, 'f', 2).toStdString()));
+    p.texts.push_back(QString::fromStdString("Elapsed Time: " + QString::number(elapsed, 'f', 2).toStdString()));
+    p.texts.push_back(QString::fromStdString("V_Ego: " + QString::number(v_ego, 'f', 2).toStdString()));
+    p.texts.push_back(QString::fromStdString("A_Ego: " + QString::number(a_ego, 'f', 2).toStdString()));
+    p.texts.push_back(QString::fromStdString("\nHistory: "));
+    p.texts.push_back(QString::fromStdString(history));
   } else {
     p.texts.push_back(tr("Unknown"));
     p.texts.push_back(tr("Unknown"));
@@ -72,15 +80,11 @@ Profile::ProfileStatus Profile::getProfileStatus(const SubMaster &sm, uint64_t s
 }
 
 void Profile::paintEvent(QPaintEvent *event) {
-
   int h = 600;
   int w = 600;
-
   int margin = 40;
   int radius = 20;
-
   int font_size = 24;
-
 
   // align to centre-right of screen
   QRect r = QRect(width() - w - margin, (height() - h) / 2, w, h);
