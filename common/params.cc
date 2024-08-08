@@ -110,6 +110,7 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"CurrentBootlog", PERSISTENT},
     {"CurrentRoute", CLEAR_ON_MANAGER_START | CLEAR_ON_ONROAD_TRANSITION},
     {"CustomProfileEnabledToggle", CLEAR_ON_MANAGER_START},
+    {"CustomProfilePlan", PERSISTENT},
     {"DisableLogging", CLEAR_ON_MANAGER_START | CLEAR_ON_ONROAD_TRANSITION},
     {"DisablePowerDown", PERSISTENT},
     {"DisableUpdates", PERSISTENT},

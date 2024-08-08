@@ -11,7 +11,7 @@ LongCtrlState = car.CarControl.Actuators.LongControlState
 def state_trans(CP, active, brake_pressed, v_ego, accel_value):
     """ Unlike the usual state transition function, this has only uses two states: off and pid. 'stopping' is used when
     the speed is close to zero and acceleration is negative."""
-    if not active or brake_pressed:
+    if not active:
         long_control_state = LongCtrlState.off
     elif (accel_value <= 0.0) and (v_ego < CP.vEgoStopping):
         # enter stopping state if conditions met
@@ -37,11 +37,13 @@ class ProfileControl:
 
         self.current_stage = 0
         self.start_time = 0  # time that the profile started
-        self.current_time = 0 # time of last update
+        self.current_time = 0  # time of last update
 
         self.isRunning = False
 
         self.last_output_accel = 0.0
+
+        self.history = []
 
         # create a new plan index with the scheduled start times for each stage (instead of durations)
         self.plan_schedule = []
@@ -58,10 +60,12 @@ class ProfileControl:
         self.current_stage = 0
         self.start_time = time.monotonic()
         self.isRunning = True
+        self.history = []
 
     def stop(self):
         self.current_stage = len(self.plan)
         self.isRunning = False
+        self.start_time = 0.0
 
 
 
@@ -71,7 +75,7 @@ class ProfileControl:
 
         # data = {}
 
-        self.current_time = time.monotonic()
+        self.current_time = 0.0
 
         # state transition
         self.long_control_state = state_trans(self.CP, active, CS.brakePressed, CS.vEgo, self.last_output_accel)
@@ -85,13 +89,17 @@ class ProfileControl:
 
         # TODO: reveiew stopping and starting states
         else:
+            self.current_time = time.monotonic()
+            elapsed = self.current_time - self.start_time
             # update stage if needed
-            if time.monotonic() - self.start_time > self.plan_schedule[self.current_stage][1]:
+            if elapsed > self.plan_schedule[self.current_stage][1]:
                 self.current_stage += 1
 
             # get accel value based on stage, zero if no more stages
             if self.current_stage < len(self.plan_schedule):
                 accel = self.plan_schedule[self.current_stage][0]
+                if len(self.history) <= self.current_stage:
+                    self.history.append((round(elapsed, 4), accel))
             else:
                 accel = 0.0
                 self.stop()

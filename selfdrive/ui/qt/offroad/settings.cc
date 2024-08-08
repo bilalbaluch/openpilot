@@ -86,6 +86,13 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
                                           "../assets/offroad/icon_speed_limit.png",
                                           longi_button_texts);
 
+//
+//  std::vector<QString> custom_profile_plan_texts{tr("Plan 1"), tr("Plan 2"), tr("Plan 3"), tr("Plan 4"), tr("Plan 5")};
+//  custom_profile_plan_setting = new ButtonParamControl("CustomProfilePlan", tr("Custom Profile Plan"),
+//                                          tr("Select a custom profile plan to run when the custom profile is enabled."),
+//                                          "../assets/offroad/icon_speed_limit.png",
+//                                          custom_profile_plan_texts);
+
   // set up uiState update for personality setting
   QObject::connect(uiState(), &UIState::uiUpdate, this, &TogglesPanel::updateState);
 
@@ -102,7 +109,13 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
     if (param == "DisengageOnAccelerator") {
       addItem(long_personality_setting);
     }
+//
+//    addItem(custom_profile_plan_setting);
+//
   }
+//
+//  profilePlanBtn = new ButtonControl(tr("Profile Plan"), tr("SELECT"));
+//  connect()
 
   // Toggles with confirmation dialogs
   toggles["ExperimentalMode"]->setActiveIcon("../assets/img_experimental.svg");

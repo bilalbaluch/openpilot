@@ -83,6 +83,7 @@ class Ratekeeper:
     self._last_monitor_time = time.monotonic()
     self._dts.append(self._last_monitor_time - prev)
 
+    # TODO: figure this out
     lagged = False
     remaining = self._next_frame_time - time.monotonic()
     self._next_frame_time += self._interval

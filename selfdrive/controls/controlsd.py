@@ -127,8 +127,12 @@ class Controls:
 
     # initialising the profile controller
     # TODO: move the plan to somewhere else
-    plan = [(0.0, 5.0), (10.0, 5.0), (-5.0, 4.0)]
+    plan = [(0.0, 30.0), (1.45, 7.4), (-2.9, 4.0)]
     self.PrC = ProfileControl(self.CP, plan)
+    self.profileRunThisEngagement = False
+
+    # custom profile mode toggle
+    self.custom_profile_enabled = False
 
 
     self.LaC: LatControl
@@ -157,7 +161,6 @@ class Controls:
     self.steer_limited = False
     self.desired_curvature = 0.0
     self.experimental_mode = False
-    self.custom_profile_enabled = False
     self.personality = self.read_personality_param()
     self.v_cruise_helper = VCruiseHelper(self.CP)
     self.recalibrating_seen = False
@@ -685,10 +688,13 @@ class Controls:
     actuators = CC.actuators
 
     # start the profile if able to do so
-    if (self.enabled and not self.PrC.isRunning):
+    if self.enabled and not self.PrC.isRunning and not self.profileRunThisEngagement:
       self.PrC.start()
-    elif (not self.enabled and self.PrC.isRunning):
-      self.PrC.stop()
+      self.profileRunThisEngagement = True
+    elif not self.enabled:
+      if self.PrC.isRunning:
+        self.PrC.stop()
+      self.profileRunThisEngagement = False
 
     # longitudinal control state should be off/stopping/starting/pid
     actuators.longControlState = self.PrC.long_control_state
@@ -838,6 +844,7 @@ class Controls:
     controlsState.profileStage = self.PrC.current_stage
     controlsState.profileRunning = self.PrC.isRunning
     controlsState.profileActualAccel = self.PrC.last_output_accel
+    controlsState.profileHistory = str(self.PrC.history)
 
 
 
