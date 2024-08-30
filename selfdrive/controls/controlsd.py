@@ -127,7 +127,8 @@ class Controls:
 
     # initialising the profile controller
     # TODO: move the plan to somewhere else
-    plan = [(0.0, 30.0), (1.45, 7.4), (-2.9, 4.0)]
+    # plan = [(0.0, 30.0), (1.45, 7.4), (-2.9, 4.0)]
+    plan = [(0.0, 30.0), (0.4, 7.4), (-0.7, 4.0)]
     self.PrC = ProfileControl(self.CP, plan)
     self.profileRunThisEngagement = False
 
