@@ -537,6 +537,46 @@
         <source>Profile Stopped</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Unknown Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 7</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1115,6 +1155,54 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>When enabled, run a custom speed profile, disabling the stock OpenPilot system. Overrides standard OpenPilot behaviour to run the configured profile - not designed to be a driver assistance system, use with caution.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select Acceleration Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SELECT</source>
+        <translation type="unfinished">اختيار</translation>
+    </message>
+    <message>
+        <source>Choose from various acceleration profiles for custom profile mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select a profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 7</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

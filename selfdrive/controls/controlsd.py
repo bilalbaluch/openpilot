@@ -126,21 +126,62 @@ class Controls:
     self.VM = VehicleModel(self.CP)
 
     # initialising the profile controller
-    # TODO: move the plan to somewhere else
-    # plan = [(0.0, 30.0), (1.45, 7.4), (-2.9, 4.0)]
-    # plan = [(0.0, 10.0), (0.4, 7.4), (-0.7, 4.0)]
-    plan = [(0.0, 10.0), (1.0, 1.0), (1.1, 0.5), (1.2, 0.5), (1.3, 0.5),
+    # Define multiple acceleration profiles
+    self.profile_plans = {
+        "0": [  # Profile 0
+            (0.0, 11.0), (1.0, 1.0), (1.1, 0.5), (1.2, 0.5), (1.3, 0.5),
             (1.4, 0.5), (1.5, 0.5), (0.0, 2.0), (1.6, 0.1), (1.7, 0.1),
             (1.8, 0.1), (1.9, 0.1), (2.0, 0.1), (1.5, 0.1), (1.0, 0.1),
             (0.5, 0.1), (0.0, 0.1), (-0.1, 0.1), (-0.2, 0.1), (-0.3, 0.1),
             (-0.4, 0.1), (-0.5, 0.1), (-0.6, 0.5), (-0.7, 0.5), (-0.8, 0.5),
             (-0.9, 0.5), (-1.0, 0.5), (-1.1, 0.5), (-1.2, 0.5), (-1.3, 0.5),
-            (-1.4, 0.5), (-1.5, 0.5)]
-    self.PrC = ProfileControl(self.CP, plan)
+            (-1.4, 0.5), (-1.5, 0.5)
+        ],
+        "1": [  # Profile 1
+            (0.0, 10.0), (0.5, 2.0), (0.7, 1.0), (0.8, 1.0),
+            (0.9, 0.5), (1.0, 0.5), (0.8, 0.5), (0.6, 0.5),
+            (0.0, 1.0), (-0.4, 1.0), (-0.2, 2.0), (0.0, 1.0),
+            (-0.4, 1.0), (-0.6, 1.0), (-0.8, 1.0)
+        ],
+        "2": [  # Profile 2
+            (0.0, 9.0), (1.5, 1.0), (2.0, 2.0), (-1.0, 0.5), (-1.5, 0.5),
+            (-2.0, 0.5)
+        ],
+        "3": [  # Profile 3
+            (0.0, 8.0), (2.0, 0.5), (1.5, 0.3), (1.0, 0.3),
+            (1.5, 0.3), (2.0, 0.3), (1.0, 0.3), (0.0, 0.3),
+            (0.0, 0.3), (0.0, 1.0), (-0.5, 0.3), (-1.0, 0.3),
+            (-1.5, 0.3), (-2.0, 0.3), (-2.5, 0.3), (-2.5, 0.3)
+        ],
+        "4": [  # Profile 4
+            (0.0, 7.0), (1.5, 1.0), (2.0, 2.0), (-2.0, 0.5), (-2.5, 0.5)
+        ],
+        "5": [  # Profile 5
+            (0.0, 6.5), (1.0, 2.0), (1.5, 1.0), (1.0, 1.0),
+            (-1.0, 1.0), (0.0, 1.0), (-0.5, 1.0), (-1.0, 1.0)
+        ],
+        "6": [  # Profile 6
+            (0.0, 6.0), (2.0, 1.0), (0.0, 3.0), (-2.0, 1.0), (-1.0, 2.0)
+        ],
+        "7": [  # Profile 7
+            (0.0, 5.5), (1.0, 0.5), (2.0, 0.5), (1.0, 0.5), (0.0, 0.5),
+            (-1.0, 0.5), (-2.0, 0.5), (-1.0, 1.0), (0.0, 0.5)
+        ],
+        # You can add more profiles here (in case of addition/removal of profile, kindly also update other files:
+        # selfdrive/ui/qt/onroad/profile.cc & selfdrive/ui/qt/offroad/settings.cc)
+    }
+
+    # Default to the Standard profile if no profile is selected
+    selected_profile = self.params.get("CustomProfilePlan", encoding="utf8").strip()
+    if selected_profile not in self.profile_plans:
+        selected_profile = "0"  # Default to Standard
+
+    self.PrC = ProfileControl(self.CP, self.profile_plans[selected_profile])
     self.profileRunThisEngagement = False
 
     # custom profile mode toggle
     self.custom_profile_enabled = False
+    self.current_profile_name = selected_profile
 
 
     self.LaC: LatControl
@@ -844,6 +885,7 @@ class Controls:
 
     # update the custom profile enabled state
     controlsState.customProfileEnabled = self.custom_profile_enabled
+    controlsState.customProfilePlan = self.current_profile_name
 
     # update information about the current profile
     controlsState.profileStartTime = self.PrC.start_time
@@ -918,6 +960,16 @@ class Controls:
       if self.CP.notCar:
         self.joystick_mode = self.params.get_bool("JoystickDebugMode")
       self.custom_profile_enabled = self.params.get_bool("CustomProfileEnabledToggle")
+
+      # Check for profile plan changes
+      selected_profile = self.params.get("CustomProfilePlan", encoding="utf8").strip()
+      if selected_profile in self.profile_plans and selected_profile != self.current_profile_name:
+        self.current_profile_name = selected_profile
+        # Only update the profile controller if it's not currently running
+        if not self.PrC.isRunning:
+          self.PrC = ProfileControl(self.CP, self.profile_plans[selected_profile])
+          cloudlog.info(f"Profile plan changed to {selected_profile}")
+
       time.sleep(0.1)
 
   def controlsd_thread(self):
