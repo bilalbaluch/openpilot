@@ -1,5 +1,6 @@
 //
 // Created by geeth on 7/20/24.
+// Modified by bilal on 14/03/25.
 //
 
 #include "selfdrive/ui/qt/onroad/profile.h"
@@ -38,6 +39,9 @@ Profile::ProfileStatus Profile::getProfileStatus(const SubMaster &sm, uint64_t s
   const float accel = cs.getProfileActualAccel();
   const std::string history = cs.getProfileHistory().cStr();
 
+  // Get the currently selected profile
+  const std::string profile_plan = cs.getCustomProfilePlan().cStr();  
+
   // car state stuff
   const auto car_state = sm["carState"].getCarState();
   float v_ego = car_state.getVEgo();
@@ -47,13 +51,41 @@ Profile::ProfileStatus Profile::getProfileStatus(const SubMaster &sm, uint64_t s
   if (controls_frame >= started_frame) {  // Don't get old profile.
     if (cs.getCustomProfileEnabled()) {
       p.texts.push_back(tr("Custom Profile Mode"));
+      
+      // Map profile numbers to names
+      std::map<std::string, QString> profile_names = {
+        {"0", tr("Profile 0")},
+        {"1", tr("Profile 1")},
+        {"2", tr("Profile 2")},
+        {"3", tr("Profile 3")},
+        {"4", tr("Profile 4")},
+        {"5", tr("Profile 5")},
+        {"6", tr("Profile 6")},
+        {"7", tr("Profile 7")}
+        // You can add more profiles here (in case of addition/removal of profile, kindly also update other files: 
+        // selfdrive/ui/qt/offroad/settings.cc & selfdrive/controls/controlsd.py)
+      };
+      // For profiles not in the map, generate a generic name based on the index
+      if (profile_names.find(profile_plan) != profile_names.end()) {
+        p.texts.push_back(profile_names[profile_plan]);
+      } else {
+        // Try to convert to a number for a generic name
+        bool ok = false;
+        int profile_idx = QString::fromStdString(profile_plan).toInt(&ok);
+        if (ok) {
+          p.texts.push_back(tr("Profile #%1").arg(profile_idx));
+        } else {
+          p.texts.push_back(tr("Unknown Profile"));
+        }
+      }
     } else {
       p.texts.push_back(tr("Stock OP Mode"));
+      p.texts.push_back(tr("Disengaged"));
     }
 
     if (cs.getEnabled()) {
       p.texts.push_back(tr("Engaged"));
-    } else {
+    } else if (!cs.getCustomProfileEnabled()) {
       p.texts.push_back(tr("Disengaged"));
     }
 

@@ -74,7 +74,8 @@ private:
   Params params;
   std::map<std::string, ParamControl*> toggles;
   ButtonParamControl *long_personality_setting;
-
+  ButtonParamControl *custom_profile_plan_setting;
+  
   void updateToggles();
 };
 
