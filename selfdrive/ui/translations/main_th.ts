@@ -532,6 +532,42 @@
         <source>Profile Stopped</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Profile 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile 7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1098,19 +1134,47 @@ This may take up to a minute.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select Acceleration Profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>SELECT</source>
-        <translation type="unfinished">เลือก</translation>
+        <translation type="obsolete">เลือก</translation>
     </message>
     <message>
-        <source>Select a profile</source>
+        <source>0</source>
+        <translation type="unfinished">5G {0?}</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation type="unfinished">5G {1?}</translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation type="unfinished">5G {2?}</translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation type="unfinished">5G {3?}</translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation type="unfinished">5G {4?}</translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation type="unfinished">5G {5?}</translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation type="unfinished">5G {6?}</translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation type="unfinished">5G {7?}</translation>
+    </message>
+    <message>
+        <source>Acceleration Profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Choose which acceleration profile to use when Custom Profile Mode is enabled.</source>
+        <source>Select which acceleration profile to use when Custom Profile Mode is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

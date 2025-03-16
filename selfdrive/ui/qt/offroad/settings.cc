@@ -86,31 +86,18 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
                                           "../assets/offroad/icon_speed_limit.png",
                                           longi_button_texts);
 
-  // The button will open a selection dialog
-  auto select_profile_btn = new ButtonControl(tr("Select Acceleration Profile"), tr("SELECT"), 
-  tr("Choose which acceleration profile to use when Custom Profile Mode is enabled."));
+  std::vector<QString> custom_profile_plan_texts{tr("0"), tr("1"), tr("2"), tr("3"), tr("4"), tr("5"), tr("6"), tr("7")};
+  custom_profile_plan_setting = new ButtonParamControl("CustomProfilePlan", tr("Acceleration Profile"),
+                                          tr("Select which acceleration profile to use when Custom Profile Mode is enabled."),
+                                          "../assets/offroad/icon_speed_limit.png",
+                                          custom_profile_plan_texts);                                          
+//
+//  std::vector<QString> custom_profile_plan_texts{tr("Plan 1"), tr("Plan 2"), tr("Plan 3"), tr("Plan 4"), tr("Plan 5")};
+//  custom_profile_plan_setting = new ButtonParamControl("CustomProfilePlan", tr("Custom Profile Plan"),
+//                                          tr("Select a custom profile plan to run when the custom profile is enabled."),
+//                                          "../assets/offroad/icon_speed_limit.png",
+//                                          custom_profile_plan_texts);
 
-  connect(select_profile_btn, &ButtonControl::clicked, [=]() {
-  // Create a list of profile options (matching the indices in controlsd.py)
-  QStringList profiles = {"Profile 0", "Profile 1", "Profile 2", "Profile 3", "Profile 4", 
-  "Profile 5", "Profile 6", "Profile 7"};
-
-  // Get current profile name
-  QString cur = QString::fromStdString(params.get("CustomProfilePlan", "Profile 0"));
-
- // Make sure the current profile is valid
-  if (!profiles.contains(cur)) {
-    cur = "Profile 0"; // Default if invalid
-  }
-
-  // Show the selection dialog with profile names
-  QString selection = MultiOptionDialog::getSelection(tr("Select a profile"), profiles, cur, this);
-  if (!selection.isEmpty()) {
-    // Store the selected name directly
-    params.put("CustomProfilePlan", selection.toStdString());
-  }
-  });
-                              
   // set up uiState update for personality setting
   QObject::connect(uiState(), &UIState::uiUpdate, this, &TogglesPanel::updateState);
 
@@ -129,10 +116,12 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
     }
 
     if (param == "CustomProfileEnabledToggle") {
-      addItem(select_profile_btn);
+      addItem(custom_profile_plan_setting);
     }
   }
 //
+//  profilePlanBtn = new ButtonControl(tr("Profile Plan"), tr("SELECT"));
+//  connect()
 
   // Toggles with confirmation dialogs
   toggles["ExperimentalMode"]->setActiveIcon("../assets/img_experimental.svg");

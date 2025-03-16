@@ -39,7 +39,7 @@ Profile::ProfileStatus Profile::getProfileStatus(const SubMaster &sm, uint64_t s
   const float accel = cs.getProfileActualAccel();
   const std::string history = cs.getProfileHistory().cStr();
 
-  // Get the currently selected profile (now a string name)
+  // Get the currently selected profile
   const std::string profile_plan = cs.getCustomProfilePlan().cStr();  
 
   // car state stuff
@@ -52,8 +52,23 @@ Profile::ProfileStatus Profile::getProfileStatus(const SubMaster &sm, uint64_t s
     if (cs.getCustomProfileEnabled()) {
       p.texts.push_back(tr("Custom Profile Mode"));
       
-      // Just use the profile name directly
-      p.texts.push_back(QString::fromStdString(profile_plan));
+      // Map profile numbers to names
+      std::map<std::string, QString> profile_names = {
+        {"0", tr("Profile 0")},
+        {"1", tr("Profile 1")},
+        {"2", tr("Profile 2")},
+        {"3", tr("Profile 3")},
+        {"4", tr("Profile 4")},        
+        {"5", tr("Profile 5")},
+        {"6", tr("Profile 6")},
+        {"7", tr("Profile 7")}
+      };
+      
+      if (profile_names.find(profile_plan) != profile_names.end()) {
+        p.texts.push_back(profile_names[profile_plan]);
+      } else {
+        p.texts.push_back(tr("Unknown Profile"));
+      }
     } else {
       p.texts.push_back(tr("Stock OP Mode"));
       p.texts.push_back(tr("Disengaged"));
