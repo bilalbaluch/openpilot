@@ -122,7 +122,7 @@ def create_lfahda_cluster(packer, CAN, enabled):
 
 
 def create_acc_control(packer, CAN, enabled, accel_last, accel, stopping, gas_override, set_speed, hud_control):
-  jerk = 5
+  jerk = 10
   jn = jerk / 50
   if not enabled or gas_override:
     a_val, a_raw = 0, 0
