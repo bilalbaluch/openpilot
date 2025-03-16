@@ -532,39 +532,127 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Profile 0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 7</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Unknown Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 1 &amp; -2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 1.5 &amp; -1.5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 2 &amp; -1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 2 &amp; -0.5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 0.5 &amp; -2.5 (1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 0.5 &amp; -2.5 (2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 0.75 &amp; -1.75</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 1.25 &amp; -1.25</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 1.75 &amp; -0.75</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 0.25 &amp; -2.25 (1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step 0.25 &amp; -2.25 (2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (4)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (5)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (6)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (7)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (8)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UDDS (9)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (4)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (5)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (6)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (7)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (8)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (9)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>US06 (10)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1133,7 +1221,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>0</source>
-        <translation type="unfinished">5G {0?}</translation>
+        <translation type="obsolete">5G {0?}</translation>
     </message>
     <message>
         <source>1</source>
@@ -1170,6 +1258,98 @@ This may take up to a minute.</source>
     <message>
         <source>Select which acceleration profile to use when Custom Profile Mode is enabled.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation type="unfinished">5G {8?}</translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation type="unfinished">5G {9?}</translation>
+    </message>
+    <message>
+        <source>10</source>
+        <translation type="unfinished">5G {10?}</translation>
+    </message>
+    <message>
+        <source>11</source>
+        <translation type="unfinished">5G {11?}</translation>
+    </message>
+    <message>
+        <source>12</source>
+        <translation type="unfinished">5G {12?}</translation>
+    </message>
+    <message>
+        <source>13</source>
+        <translation type="unfinished">5G {13?}</translation>
+    </message>
+    <message>
+        <source>14</source>
+        <translation type="unfinished">5G {14?}</translation>
+    </message>
+    <message>
+        <source>15</source>
+        <translation type="unfinished">5G {15?}</translation>
+    </message>
+    <message>
+        <source>16</source>
+        <translation type="unfinished">5G {16?}</translation>
+    </message>
+    <message>
+        <source>17</source>
+        <translation type="unfinished">5G {17?}</translation>
+    </message>
+    <message>
+        <source>18</source>
+        <translation type="unfinished">5G {18?}</translation>
+    </message>
+    <message>
+        <source>19</source>
+        <translation type="unfinished">5G {19?}</translation>
+    </message>
+    <message>
+        <source>20</source>
+        <translation type="unfinished">5G {20?}</translation>
+    </message>
+    <message>
+        <source>21</source>
+        <translation type="unfinished">5G {21?}</translation>
+    </message>
+    <message>
+        <source>22</source>
+        <translation type="unfinished">5G {22?}</translation>
+    </message>
+    <message>
+        <source>23</source>
+        <translation type="unfinished">5G {23?}</translation>
+    </message>
+    <message>
+        <source>24</source>
+        <translation type="unfinished">5G {24?}</translation>
+    </message>
+    <message>
+        <source>25</source>
+        <translation type="unfinished">5G {25?}</translation>
+    </message>
+    <message>
+        <source>26</source>
+        <translation type="unfinished">5G {26?}</translation>
+    </message>
+    <message>
+        <source>27</source>
+        <translation type="unfinished">5G {27?}</translation>
+    </message>
+    <message>
+        <source>28</source>
+        <translation type="unfinished">5G {28?}</translation>
+    </message>
+    <message>
+        <source>29</source>
+        <translation type="unfinished">5G {29?}</translation>
+    </message>
+    <message>
+        <source>30</source>
+        <translation type="unfinished">5G {30?}</translation>
     </message>
 </context>
 <context>

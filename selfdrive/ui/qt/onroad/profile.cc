@@ -54,16 +54,39 @@ Profile::ProfileStatus Profile::getProfileStatus(const SubMaster &sm, uint64_t s
       
       // Map profile numbers to names
       std::map<std::string, QString> profile_names = {
-        {"0", tr("Profile 0")},
-        {"1", tr("Profile 1")},
-        {"2", tr("Profile 2")},
-        {"3", tr("Profile 3")},
-        {"4", tr("Profile 4")},        
-        {"5", tr("Profile 5")},
-        {"6", tr("Profile 6")},
-        {"7", tr("Profile 7")}
+        {"1", tr("Step 1 & -2")},
+        {"2", tr("Step 1.5 & -1.5")},
+        {"3", tr("Step 2 & -1")},
+        {"4", tr("Step 2 & -0.5")},        
+        {"5", tr("Step 0.5 & -2.5 (1)")},
+        {"6", tr("Step 0.5 & -2.5 (2)")},
+        {"7", tr("Step 0.75 & -1.75")},
+        {"8", tr("Step 1.25 & -1.25")},
+        {"9", tr("Step 1.75 & -0.75")},
+        {"10", tr("Step 0.25 & -2.25 (1)")},
+        {"11", tr("Step 0.25 & -2.25 (2)")},
+        {"12", tr("UDDS (1)")},
+        {"13", tr("UDDS (2)")},
+        {"14", tr("UDDS (3)")},
+        {"15", tr("UDDS (4)")},
+        {"16", tr("UDDS (5)")},
+        {"17", tr("UDDS (6)")},
+        {"18", tr("UDDS (7)")},
+        {"19", tr("UDDS (8)")},
+        {"20", tr("UDDS (9)")},
+        {"21", tr("US06 (1)")},
+        {"22", tr("US06 (2)")},
+        {"23", tr("US06 (3)")},
+        {"24", tr("US06 (4)")},
+        {"25", tr("US06 (5)")},
+        {"26", tr("US06 (6)")},
+        {"27", tr("US06 (7)")},
+        {"28", tr("US06 (8)")},
+        {"29", tr("US06 (9)")},
+        {"30", tr("US06 (10)")}
       };
-      
+      // You can add more profiles here (in case of addition/removal of profile, kindly also update other files: 
+      // "../selfdrive/ui/qt/offroad/settings.cc" & "../selfdrive/controls/controlsd.py")
       if (profile_names.find(profile_plan) != profile_names.end()) {
         p.texts.push_back(profile_names[profile_plan]);
       } else {
