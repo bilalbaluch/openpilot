@@ -88,33 +88,29 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
 
   // The button will open a selection dialog
   auto select_profile_btn = new ButtonControl(tr("Select Acceleration Profile"), tr("SELECT"), 
-                                         tr("Choose from various acceleration profiles for custom profile mode."));
-  connect(select_profile_btn, &ButtonControl::clicked, [=]() {
-    QStringList profiles = {
-      tr("Profile 0"), tr("Profile 1"), tr("Profile 2"), tr("Profile 3"), tr("Profile 4"),
-      tr("Profile 5"), tr("Profile 6"), tr("Profile 7")
-       // You can add more profiles here (in case of addition/removal of profile, kindly also update other files: 
-       // selfdrive/ui/qt/onroad/profile.cc & selfdrive/controls/controlsd.py)
-    };
-    
-    // Get the current profile
-    QString current = QString::fromStdString(params.get("CustomProfilePlan", "0"));
-    bool ok;
-    int current_idx = current.toInt(&ok);
-    if (!ok || current_idx < 0 || current_idx >= profiles.size()) {
-      current_idx = 0; // Default to standard if invalid
-    }
-    
-    // Show selection dialog
-    QString selection = MultiOptionDialog::getSelection(tr("Select a profile"), profiles, profiles[current_idx], this);
-    if (!selection.isEmpty()) {
-      int idx = profiles.indexOf(selection);
-      if (idx >= 0) {
-        params.put("CustomProfilePlan", std::to_string(idx));
-      }
-    }
-  });                                       
+  tr("Choose which acceleration profile to use when Custom Profile Mode is enabled."));
 
+  connect(select_profile_btn, &ButtonControl::clicked, [=]() {
+  // Create a list of profile options (matching the indices in controlsd.py)
+  QStringList profiles = {"Profile 0", "Profile 1", "Profile 2", "Profile 3", "Profile 4", 
+  "Profile 5", "Profile 6", "Profile 7"};
+
+  // Get current profile name
+  QString cur = QString::fromStdString(params.get("CustomProfilePlan", "Profile 0"));
+
+ // Make sure the current profile is valid
+  if (!profiles.contains(cur)) {
+    cur = "Profile 0"; // Default if invalid
+  }
+
+  // Show the selection dialog with profile names
+  QString selection = MultiOptionDialog::getSelection(tr("Select a profile"), profiles, cur, this);
+  if (!selection.isEmpty()) {
+    // Store the selected name directly
+    params.put("CustomProfilePlan", selection.toStdString());
+  }
+  });
+                              
   // set up uiState update for personality setting
   QObject::connect(uiState(), &UIState::uiUpdate, this, &TogglesPanel::updateState);
 

@@ -533,46 +533,6 @@
         <source>Profile Stopped</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Unknown Profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile #%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 7</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1150,43 +1110,11 @@ Isso pode levar até um minuto.</translation>
         <translation type="unfinished">SELECIONE</translation>
     </message>
     <message>
-        <source>Choose from various acceleration profiles for custom profile mode.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select a profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Profile 0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile 7</source>
+        <source>Choose which acceleration profile to use when Custom Profile Mode is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

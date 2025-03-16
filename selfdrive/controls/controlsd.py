@@ -128,45 +128,37 @@ class Controls:
     # initialising the profile controller
     # Define multiple acceleration profiles
     self.profile_plans = {
-        "0": [  # Profile 0
+        "Profile 0": [  # Profile 0
             (0.0, 11.0), (1.0, 1.0), (1.1, 0.5), (1.2, 0.5), (1.3, 0.5),
             (1.4, 0.5), (1.5, 0.5), (0.0, 2.0), (1.6, 0.1), (1.7, 0.1),
             (1.8, 0.1), (1.9, 0.1), (2.0, 0.1), (1.5, 0.1), (1.0, 0.1),
             (0.5, 0.1), (0.0, 0.1), (-0.1, 0.1), (-0.2, 0.1), (-0.3, 0.1),
             (-0.4, 0.1), (-0.5, 0.1), (-0.6, 0.5), (-0.7, 0.5), (-0.8, 0.5),
             (-0.9, 0.5), (-1.0, 0.5), (-1.1, 0.5), (-1.2, 0.5), (-1.3, 0.5),
-            (-1.4, 0.5), (-1.5, 0.5)
-        ],
-        "1": [  # Profile 1
+            (-1.4, 0.5), (-1.5, 0.5)],
+        "Profile 1": [  # Profile 1
             (0.0, 10.0), (0.5, 2.0), (0.7, 1.0), (0.8, 1.0),
             (0.9, 0.5), (1.0, 0.5), (0.8, 0.5), (0.6, 0.5),
             (0.0, 1.0), (-0.4, 1.0), (-0.2, 2.0), (0.0, 1.0),
-            (-0.4, 1.0), (-0.6, 1.0), (-0.8, 1.0)
-        ],
-        "2": [  # Profile 2
+            (-0.4, 1.0), (-0.6, 1.0), (-0.8, 1.0)],
+        "Profile 2": [  # Profile 2
             (0.0, 9.0), (1.5, 1.0), (2.0, 2.0), (-1.0, 0.5), (-1.5, 0.5),
-            (-2.0, 0.5)
-        ],
-        "3": [  # Profile 3
+            (-2.0, 0.5)],
+        "Profile 3": [  # Profile 3
             (0.0, 8.0), (2.0, 0.5), (1.5, 0.3), (1.0, 0.3),
             (1.5, 0.3), (2.0, 0.3), (1.0, 0.3), (0.0, 0.3),
             (0.0, 0.3), (0.0, 1.0), (-0.5, 0.3), (-1.0, 0.3),
-            (-1.5, 0.3), (-2.0, 0.3), (-2.5, 0.3), (-2.5, 0.3)
-        ],
-        "4": [  # Profile 4
-            (0.0, 7.0), (1.5, 1.0), (2.0, 2.0), (-2.0, 0.5), (-2.5, 0.5)
-        ],
-        "5": [  # Profile 5
+            (-1.5, 0.3), (-2.0, 0.3), (-2.5, 0.3), (-2.5, 0.3)],
+        "Profile 4": [  # Profile 4
+            (0.0, 7.0), (1.5, 1.0), (2.0, 2.0), (-2.0, 0.5), (-2.5, 0.5)],
+        "Profile 5": [  # Profile 5
             (0.0, 6.5), (1.0, 2.0), (1.5, 1.0), (1.0, 1.0),
-            (-1.0, 1.0), (0.0, 1.0), (-0.5, 1.0), (-1.0, 1.0)
-        ],
-        "6": [  # Profile 6
-            (0.0, 6.0), (2.0, 1.0), (0.0, 3.0), (-2.0, 1.0), (-1.0, 2.0)
-        ],
-        "7": [  # Profile 7
+            (-1.0, 1.0), (0.0, 1.0), (-0.5, 1.0), (-1.0, 1.0)],
+        "Profile 6": [  # Profile 6
+            (0.0, 6.0), (2.0, 1.0), (0.0, 3.0), (-2.0, 1.0), (-1.0, 2.0)],
+        "Profile 7": [  # Profile 7
             (0.0, 5.5), (1.0, 0.5), (2.0, 0.5), (1.0, 0.5), (0.0, 0.5),
-            (-1.0, 0.5), (-2.0, 0.5), (-1.0, 1.0), (0.0, 0.5)
-        ],
+            (-1.0, 0.5), (-2.0, 0.5), (-1.0, 1.0), (0.0, 0.5)],
         # You can add more profiles here (in case of addition/removal of profile, kindly also update other files:
         # selfdrive/ui/qt/onroad/profile.cc & selfdrive/ui/qt/offroad/settings.cc)
     }
@@ -174,7 +166,7 @@ class Controls:
     # Default to the Standard profile if no profile is selected
     selected_profile = self.params.get("CustomProfilePlan", encoding="utf8").strip()
     if selected_profile not in self.profile_plans:
-        selected_profile = "0"  # Default to Standard
+        selected_profile = "Profile 0"  # Default to Standard
 
     self.PrC = ProfileControl(self.CP, self.profile_plans[selected_profile])
     self.profileRunThisEngagement = False
