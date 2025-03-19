@@ -1227,7 +1227,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>0</source>
-        <translation type="obsolete">5G {0?}</translation>
+        <translation type="unfinished">5G {0?}</translation>
     </message>
     <message>
         <source>1</source>
@@ -1355,7 +1355,7 @@ This may take up to a minute.</source>
     </message>
     <message>
         <source>30</source>
-        <translation type="unfinished">5G {30?}</translation>
+        <translation type="obsolete">5G {30?}</translation>
     </message>
 </context>
 <context>

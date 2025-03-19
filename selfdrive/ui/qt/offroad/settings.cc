@@ -86,10 +86,10 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
                                           "../assets/offroad/icon_speed_limit.png",
                                           longi_button_texts);
 
-  std::vector<QString> custom_profile_plan_texts{tr("1"), tr("2"), tr("3"), tr("4"), tr("5"), tr("6"), tr("7"), tr("8"),
-                                                tr("9"), tr("10"), tr("11"), tr("12"), tr("13"), tr("14"), tr("15"), tr("16"),
-                                                tr("17"), tr("18"), tr("19"), tr("20"), tr("21"), tr("22"), tr("23"), tr("24"),
-                                                tr("25"), tr("26"), tr("27"), tr("28"), tr("29"), tr("30")
+  std::vector<QString> custom_profile_plan_texts{tr("0"), tr("1"), tr("2"), tr("3"), tr("4"), tr("5"), tr("6"), tr("7"),
+                                                tr("8"), tr("9"), tr("10"), tr("11"), tr("12"), tr("13"), tr("14"), tr("15"),
+                                                tr("16"), tr("17"), tr("18"), tr("19"), tr("20"), tr("21"), tr("22"), tr("23"),
+                                                tr("24"), tr("25"), tr("26"), tr("27"), tr("28"), tr("29")
                                                 }; 
   // You can add more profiles here (in case of addition/removal of profile, kindly also update other files: 
   // "../selfdrive/ui/qt/onroad/profile.cc" & "../selfdrive/controls/controlsd.py")
