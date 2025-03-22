@@ -86,34 +86,17 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
                                           "../assets/offroad/icon_speed_limit.png",
                                           longi_button_texts);
 
-  // The button will open a selection dialog
-  auto select_profile_btn = new ButtonControl(tr("Select Acceleration Profile"), tr("SELECT"), 
-                                         tr("Choose from various acceleration profiles for custom profile mode."));
-  connect(select_profile_btn, &ButtonControl::clicked, [=]() {
-    QStringList profiles = {
-      tr("Profile 0"), tr("Profile 1"), tr("Profile 2"), tr("Profile 3"), tr("Profile 4"),
-      tr("Profile 5"), tr("Profile 6"), tr("Profile 7")
-       // You can add more profiles here (in case of addition/removal of profile, kindly also update other files: 
-       // selfdrive/ui/qt/onroad/profile.cc & selfdrive/controls/controlsd.py)
-    };
-    
-    // Get the current profile
-    QString current = QString::fromStdString(params.get("CustomProfilePlan", "0"));
-    bool ok;
-    int current_idx = current.toInt(&ok);
-    if (!ok || current_idx < 0 || current_idx >= profiles.size()) {
-      current_idx = 0; // Default to standard if invalid
-    }
-    
-    // Show selection dialog
-    QString selection = MultiOptionDialog::getSelection(tr("Select a profile"), profiles, profiles[current_idx], this);
-    if (!selection.isEmpty()) {
-      int idx = profiles.indexOf(selection);
-      if (idx >= 0) {
-        params.put("CustomProfilePlan", std::to_string(idx));
-      }
-    }
-  });                                       
+  std::vector<QString> custom_profile_plan_texts{tr("0"), tr("1"), tr("2"), tr("3"), tr("4"), tr("5"), tr("6"), tr("7"),
+                                                tr("8"), tr("9"), tr("10"), tr("11"), tr("12"), tr("13"), tr("14"), tr("15"),
+                                                tr("16"), tr("17"), tr("18"), tr("19"), tr("20"), tr("21"), tr("22"), tr("23"),
+                                                tr("24"), tr("25"), tr("26"), tr("27"), tr("28"), tr("29")
+                                                }; 
+  // You can add more profiles here (in case of addition/removal of profile, kindly also update other files: 
+  // "../selfdrive/ui/qt/onroad/profile.cc" & "../selfdrive/controls/controlsd.py")
+  custom_profile_plan_setting = new ButtonParamControl("CustomProfilePlan", tr("Acceleration Profile"),
+                                          tr("Select which acceleration profile to use when Custom Profile Mode is enabled."),
+                                          "../assets/offroad/icon_speed_limit.png",
+                                          custom_profile_plan_texts);                                          
 
   // set up uiState update for personality setting
   QObject::connect(uiState(), &UIState::uiUpdate, this, &TogglesPanel::updateState);
@@ -133,10 +116,9 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
     }
 
     if (param == "CustomProfileEnabledToggle") {
-      addItem(select_profile_btn);
+      addItem(custom_profile_plan_setting);
     }
   }
-//
 
   // Toggles with confirmation dialogs
   toggles["ExperimentalMode"]->setActiveIcon("../assets/img_experimental.svg");
