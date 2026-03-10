@@ -705,7 +705,8 @@ struct ControlsState @0x97ff69c53601abf1 {
   profileRunning @72 :Bool;
   profileActualAccel @73 :Float32;
   profileHistory @74 :Text;
-  customProfilePlan @75 :Text;
+  mabxiiActive @75 :Bool;
+  targetAccel @76 :Float32;
 
   longControlState @30 :Car.CarControl.Actuators.LongControlState;
   vTargetLead @3 :Float32;

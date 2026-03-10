@@ -114,6 +114,41 @@
     </message>
 </context>
 <context>
+    <name>CustomControlUI</name>
+    <message>
+        <source>MABXII Control Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stock OP Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Engaged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disengaged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MABXII Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MABXII Inactive - Waiting for CAN Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Control Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DeclinePage</name>
     <message>
         <source>You must accept the Terms and Conditions in order to use openpilot.</source>
@@ -500,161 +535,6 @@
     <message>
         <source>comma prime</source>
         <translation>comma 高級會員</translation>
-    </message>
-</context>
-<context>
-    <name>Profile</name>
-    <message>
-        <source>Custom Profile Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stock OP Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Engaged</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disengaged</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile Running</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profile Stopped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unknown Profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 1 &amp; -2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 1.5 &amp; -1.5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 2 &amp; -1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 2 &amp; -0.5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 0.5 &amp; -2.5 (1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 0.5 &amp; -2.5 (2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 0.75 &amp; -1.75</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 1.25 &amp; -1.25</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 1.75 &amp; -0.75</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 0.25 &amp; -2.25 (1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step 0.25 &amp; -2.25 (2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (3)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (4)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (5)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (6)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (7)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (8)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UDDS (9)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (3)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (4)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (5)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (6)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (7)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (8)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (9)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>US06 (10)</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1214,148 +1094,300 @@ This may take up to a minute.</source>
         <translation>即使在openpilot未激活時也啟用駕駛監控。</translation>
     </message>
     <message>
-        <source>Enable Custom Profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>When enabled, run a custom speed profile, disabling the stock OpenPilot system. Overrides standard OpenPilot behaviour to run the configured profile - not designed to be a driver assistance system, use with caution.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>SELECT</source>
         <translation type="obsolete">選取</translation>
     </message>
     <message>
         <source>0</source>
-        <translation type="unfinished">5G {0?}</translation>
+        <translation type="obsolete">5G {0?}</translation>
     </message>
     <message>
         <source>1</source>
-        <translation type="unfinished">5G {1?}</translation>
+        <translation type="obsolete">5G {1?}</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="unfinished">5G {2?}</translation>
+        <translation type="obsolete">5G {2?}</translation>
     </message>
     <message>
         <source>3</source>
-        <translation type="unfinished">5G {3?}</translation>
+        <translation type="obsolete">5G {3?}</translation>
     </message>
     <message>
         <source>4</source>
-        <translation type="unfinished">5G {4?}</translation>
+        <translation type="obsolete">5G {4?}</translation>
     </message>
     <message>
         <source>5</source>
-        <translation type="unfinished">5G {5?}</translation>
+        <translation type="obsolete">5G {5?}</translation>
     </message>
     <message>
         <source>6</source>
-        <translation type="unfinished">5G {6?}</translation>
+        <translation type="obsolete">5G {6?}</translation>
     </message>
     <message>
         <source>7</source>
-        <translation type="unfinished">5G {7?}</translation>
-    </message>
-    <message>
-        <source>Acceleration Profile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select which acceleration profile to use when Custom Profile Mode is enabled.</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">5G {7?}</translation>
     </message>
     <message>
         <source>8</source>
-        <translation type="unfinished">5G {8?}</translation>
+        <translation type="obsolete">5G {8?}</translation>
     </message>
     <message>
         <source>9</source>
-        <translation type="unfinished">5G {9?}</translation>
+        <translation type="obsolete">5G {9?}</translation>
     </message>
     <message>
         <source>10</source>
-        <translation type="unfinished">5G {10?}</translation>
+        <translation type="obsolete">5G {10?}</translation>
     </message>
     <message>
         <source>11</source>
-        <translation type="unfinished">5G {11?}</translation>
+        <translation type="obsolete">5G {11?}</translation>
     </message>
     <message>
         <source>12</source>
-        <translation type="unfinished">5G {12?}</translation>
+        <translation type="obsolete">5G {12?}</translation>
     </message>
     <message>
         <source>13</source>
-        <translation type="unfinished">5G {13?}</translation>
+        <translation type="obsolete">5G {13?}</translation>
     </message>
     <message>
         <source>14</source>
-        <translation type="unfinished">5G {14?}</translation>
+        <translation type="obsolete">5G {14?}</translation>
     </message>
     <message>
         <source>15</source>
-        <translation type="unfinished">5G {15?}</translation>
+        <translation type="obsolete">5G {15?}</translation>
     </message>
     <message>
         <source>16</source>
-        <translation type="unfinished">5G {16?}</translation>
+        <translation type="obsolete">5G {16?}</translation>
     </message>
     <message>
         <source>17</source>
-        <translation type="unfinished">5G {17?}</translation>
+        <translation type="obsolete">5G {17?}</translation>
     </message>
     <message>
         <source>18</source>
-        <translation type="unfinished">5G {18?}</translation>
+        <translation type="obsolete">5G {18?}</translation>
     </message>
     <message>
         <source>19</source>
-        <translation type="unfinished">5G {19?}</translation>
+        <translation type="obsolete">5G {19?}</translation>
     </message>
     <message>
         <source>20</source>
-        <translation type="unfinished">5G {20?}</translation>
+        <translation type="obsolete">5G {20?}</translation>
     </message>
     <message>
         <source>21</source>
-        <translation type="unfinished">5G {21?}</translation>
+        <translation type="obsolete">5G {21?}</translation>
     </message>
     <message>
         <source>22</source>
-        <translation type="unfinished">5G {22?}</translation>
+        <translation type="obsolete">5G {22?}</translation>
     </message>
     <message>
         <source>23</source>
-        <translation type="unfinished">5G {23?}</translation>
+        <translation type="obsolete">5G {23?}</translation>
     </message>
     <message>
         <source>24</source>
-        <translation type="unfinished">5G {24?}</translation>
+        <translation type="obsolete">5G {24?}</translation>
     </message>
     <message>
         <source>25</source>
-        <translation type="unfinished">5G {25?}</translation>
+        <translation type="obsolete">5G {25?}</translation>
     </message>
     <message>
         <source>26</source>
-        <translation type="unfinished">5G {26?}</translation>
+        <translation type="obsolete">5G {26?}</translation>
     </message>
     <message>
         <source>27</source>
-        <translation type="unfinished">5G {27?}</translation>
+        <translation type="obsolete">5G {27?}</translation>
     </message>
     <message>
         <source>28</source>
-        <translation type="unfinished">5G {28?}</translation>
+        <translation type="obsolete">5G {28?}</translation>
     </message>
     <message>
         <source>29</source>
-        <translation type="unfinished">5G {29?}</translation>
+        <translation type="obsolete">5G {29?}</translation>
     </message>
     <message>
         <source>30</source>
         <translation type="obsolete">5G {30?}</translation>
+    </message>
+    <message>
+        <source>Enable MABXII Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When enabled, the vehicle will follow acceleration commands from MABXII sent over the A-CAN bus. This mode allows direct control of longitudinal acceleration via external CAN messages with ID 0x029. This is a research tool, not a driver assistance system, use with caution.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dongle ID</source>
+        <translation type="obsolete">Dongle ID</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation type="obsolete">無法使用</translation>
+    </message>
+    <message>
+        <source>Serial</source>
+        <translation type="obsolete">序號</translation>
+    </message>
+    <message>
+        <source>Pair Device</source>
+        <translation type="obsolete">配對裝置</translation>
+    </message>
+    <message>
+        <source>PAIR</source>
+        <translation type="obsolete">配對</translation>
+    </message>
+    <message>
+        <source>Pair your device with comma connect (connect.comma.ai) and claim your comma prime offer.</source>
+        <translation type="obsolete">將您的裝置與 comma connect (connect.comma.ai) 配對並領取您的 comma 高級會員優惠。</translation>
+    </message>
+    <message>
+        <source>Driver Camera</source>
+        <translation type="obsolete">駕駛員監控鏡頭</translation>
+    </message>
+    <message>
+        <source>PREVIEW</source>
+        <translation type="obsolete">預覽</translation>
+    </message>
+    <message>
+        <source>Preview the driver facing camera to ensure that driver monitoring has good visibility. (vehicle must be off)</source>
+        <translation type="obsolete">預覽駕駛員監控鏡頭畫面，以確保其具有良好視野。（僅在熄火時可用）</translation>
+    </message>
+    <message>
+        <source>Reset Calibration</source>
+        <translation type="obsolete">重設校準</translation>
+    </message>
+    <message>
+        <source>RESET</source>
+        <translation type="obsolete">重設</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reset calibration?</source>
+        <translation type="obsolete">您確定要重設校準嗎？</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="obsolete">重設</translation>
+    </message>
+    <message>
+        <source>Review Training Guide</source>
+        <translation type="obsolete">觀看使用教學</translation>
+    </message>
+    <message>
+        <source>REVIEW</source>
+        <translation type="obsolete">觀看</translation>
+    </message>
+    <message>
+        <source>Review the rules, features, and limitations of openpilot</source>
+        <translation type="obsolete">觀看 openpilot 的使用規則、功能和限制</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to review the training guide?</source>
+        <translation type="obsolete">您確定要觀看使用教學嗎？</translation>
+    </message>
+    <message>
+        <source>Review</source>
+        <translation type="obsolete">回顧</translation>
+    </message>
+    <message>
+        <source>Regulatory</source>
+        <translation type="obsolete">法規/監管</translation>
+    </message>
+    <message>
+        <source>VIEW</source>
+        <translation type="obsolete">觀看</translation>
+    </message>
+    <message>
+        <source>Change Language</source>
+        <translation type="obsolete">更改語言</translation>
+    </message>
+    <message>
+        <source>CHANGE</source>
+        <translation type="obsolete">更改</translation>
+    </message>
+    <message>
+        <source>Select a language</source>
+        <translation type="obsolete">選擇語言</translation>
+    </message>
+    <message>
+        <source>Reboot</source>
+        <translation type="obsolete">重新啟動</translation>
+    </message>
+    <message>
+        <source>Power Off</source>
+        <translation type="obsolete">關機</translation>
+    </message>
+    <message>
+        <source>openpilot requires the device to be mounted within 4° left or right and within 5° up or 9° down. openpilot is continuously calibrating, resetting is rarely required.</source>
+        <translation type="obsolete">openpilot 需要將裝置固定在左右偏差 4° 以內，朝上偏差 5° 以內或朝下偏差 9° 以內。鏡頭在後台會持續自動校準，很少有需要重置的情況。</translation>
+    </message>
+    <message>
+        <source> Your device is pointed %1° %2 and %3° %4.</source>
+        <translation type="obsolete"> 你的裝置目前朝%2 %1° 以及朝%4 %3° 。</translation>
+    </message>
+    <message>
+        <source>down</source>
+        <translation type="obsolete">下</translation>
+    </message>
+    <message>
+        <source>up</source>
+        <translation type="obsolete">上</translation>
+    </message>
+    <message>
+        <source>left</source>
+        <translation type="obsolete">左</translation>
+    </message>
+    <message>
+        <source>right</source>
+        <translation type="obsolete">右</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to reboot?</source>
+        <translation type="obsolete">您確定要重新啟動嗎？</translation>
+    </message>
+    <message>
+        <source>Disengage to Reboot</source>
+        <translation type="obsolete">請先取消控車才能重新啟動</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to power off?</source>
+        <translation type="obsolete">您確定您要關機嗎？</translation>
+    </message>
+    <message>
+        <source>Disengage to Power Off</source>
+        <translation type="obsolete">請先取消控車才能關機</translation>
+    </message>
+    <message>
+        <source>×</source>
+        <translation type="obsolete">×</translation>
+    </message>
+    <message>
+        <source>Device</source>
+        <translation type="obsolete">裝置</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="obsolete">網路</translation>
+    </message>
+    <message>
+        <source>Toggles</source>
+        <translation type="obsolete">設定</translation>
+    </message>
+    <message>
+        <source>Software</source>
+        <translation type="obsolete">軟體</translation>
     </message>
 </context>
 <context>

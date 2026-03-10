@@ -25,9 +25,12 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
       "../assets/offroad/icon_openpilot.png",
     },
     {
-      "CustomProfileEnabledToggle",
-      tr("Enable Custom Profile"),
-      tr("When enabled, run a custom speed profile, disabling the stock OpenPilot system. Overrides standard OpenPilot behaviour to run the configured profile - not designed to be a driver assistance system, use with caution."),
+      "MabxiiControlEnabledToggle",
+      tr("Enable MABXII Control"),
+      tr("When enabled, the vehicle will follow acceleration commands from "
+         "MABXII sent over the A-CAN bus. This mode allows direct control of "
+         "longitudinal acceleration via external CAN messages with ID 0x029. "
+         "This is a research tool, not a driver assistance system, use with caution."),
       "../assets/offroad/icon_warning.png",
     },
     {
@@ -86,17 +89,6 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
                                           "../assets/offroad/icon_speed_limit.png",
                                           longi_button_texts);
 
-  std::vector<QString> custom_profile_plan_texts{tr("0"), tr("1"), tr("2"), tr("3"), tr("4"), tr("5"), tr("6"), tr("7"),
-                                                tr("8"), tr("9"), tr("10"), tr("11"), tr("12"), tr("13"), tr("14"), tr("15"),
-                                                tr("16"), tr("17"), tr("18"), tr("19"), tr("20"), tr("21"), tr("22"), tr("23"),
-                                                tr("24"), tr("25"), tr("26"), tr("27"), tr("28"), tr("29")
-                                                }; 
-  // You can add more profiles here (in case of addition/removal of profile, kindly also update other files: 
-  // "../selfdrive/ui/qt/onroad/profile.cc" & "../selfdrive/controls/controlsd.py")
-  custom_profile_plan_setting = new ButtonParamControl("CustomProfilePlan", tr("Acceleration Profile"),
-                                          tr("Select which acceleration profile to use when Custom Profile Mode is enabled."),
-                                          "../assets/offroad/icon_speed_limit.png",
-                                          custom_profile_plan_texts);                                          
 
   // set up uiState update for personality setting
   QObject::connect(uiState(), &UIState::uiUpdate, this, &TogglesPanel::updateState);
@@ -114,12 +106,7 @@ TogglesPanel::TogglesPanel(SettingsWindow *parent) : ListWidget(parent) {
     if (param == "DisengageOnAccelerator") {
       addItem(long_personality_setting);
     }
-
-    if (param == "CustomProfileEnabledToggle") {
-      addItem(custom_profile_plan_setting);
-    }
   }
-
   // Toggles with confirmation dialogs
   toggles["ExperimentalMode"]->setActiveIcon("../assets/img_experimental.svg");
   toggles["ExperimentalMode"]->setConfirmation(true, true);
